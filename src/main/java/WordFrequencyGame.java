@@ -10,16 +10,16 @@ public class WordFrequencyGame {
 
         if (sentence.split(BLANK_SPACE).length == ONE_WORD ) {
             return sentence + " " + ONE_WORD;
-        } else {
-            try {
-                List<WordInfo> wordInfoList = calculateWordAndCount(sentence);
+        }
 
-                wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+        try {
+            List<WordInfo> wordInfoList = calculateWordAndCount(sentence);
 
-                return combineWordInfoListToAString(wordInfoList);
-            } catch (Exception e) {
-                return "Calculate Error";
-            }
+            wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+
+            return combineWordInfoListToAString(wordInfoList);
+        } catch (Exception e) {
+            return "Calculate Error";
         }
     }
 
