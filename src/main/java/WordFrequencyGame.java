@@ -7,11 +7,9 @@ public class WordFrequencyGame {
 
     public String getResult(String sentence) {
 
-
         if (sentence.split(BLANK_SPACE).length == 1) {
             return sentence + " 1";
         } else {
-
             try {
                 List<WordInfo> wordInfoList = calculateWordAndCount(sentence);
 
@@ -24,8 +22,6 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-
-
                 return "Calculate Error";
             }
         }
