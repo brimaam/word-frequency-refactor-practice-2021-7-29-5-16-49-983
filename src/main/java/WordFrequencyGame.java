@@ -8,14 +8,14 @@ public class WordFrequencyGame {
 
     public String getResult(String sentence) {
 
-        if (sentence.split(BLANK_SPACE).length == ONE_WORD ) {
+        if (sentence.split(BLANK_SPACE).length == ONE_WORD) {
             return sentence + " " + ONE_WORD;
         }
 
         try {
             List<WordInfo> wordInfoList = calculateWordAndCount(sentence);
 
-            wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+            sortWordInfoList(wordInfoList);
 
             return combineWordInfoListToAString(wordInfoList);
         } catch (Exception e) {
@@ -23,16 +23,20 @@ public class WordFrequencyGame {
         }
     }
 
+    private void sortWordInfoList(List<WordInfo> wordInfoList) {
+       wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+    }
+
     private String combineWordInfoListToAString(List<WordInfo> wordInfoList) {
         StringJoiner joiner = new StringJoiner("\n");
-        wordInfoList.forEach( wordInfo -> {
+        wordInfoList.forEach(wordInfo -> {
             joiner.add(wordInfo.getWord() + " " + wordInfo.getWordCount());
         });
         return joiner.toString();
     }
 
-    private List<WordInfo> calculateWordAndCount(String sentence){
-        List<WordInfo> wordInfos  = new ArrayList<>();
+    private List<WordInfo> calculateWordAndCount(String sentence) {
+        List<WordInfo> wordInfos = new ArrayList<>();
         List<String> words = Arrays.asList(sentence.split(BLANK_SPACE));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
 
