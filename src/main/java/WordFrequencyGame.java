@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
@@ -16,7 +13,7 @@ public class WordFrequencyGame {
         } else {
 
             try {
-                List<WordInfo> wordInfoList = getWordAndCount(sentence);
+                List<WordInfo> wordInfoList = calculateWordAndCount(sentence);
 
                 wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
@@ -53,6 +50,19 @@ public class WordFrequencyGame {
             list.add(wordInfo);
         }
         return list;
+    }
+
+    private List<WordInfo> calculateWordAndCount(String sentence){
+        List<WordInfo> wordInfos  = new ArrayList<>();
+        List<String> words = Arrays.asList(sentence.split(BLANK_SPACE));
+        List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
+
+        distinctWords.forEach(distinctWord -> {
+            int count = (int) words.stream().filter(word -> word.equals(distinctWord)).count();
+            wordInfos.add(new WordInfo(distinctWord, count));
+        });
+
+        return wordInfos;
     }
 
 
