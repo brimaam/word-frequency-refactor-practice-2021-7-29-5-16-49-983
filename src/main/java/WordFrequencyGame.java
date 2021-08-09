@@ -23,7 +23,7 @@ public class WordFrequencyGame {
     }
 
     private void sortWordInfoList(List<WordInfo> wordInfos) {
-        wordInfos.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
+        wordInfos.sort((wordOne, wordTwo) -> wordTwo.getWordCount() - wordOne.getWordCount());
     }
 
     private String combineWordInfoListToAString(List<WordInfo> wordInfos) {
