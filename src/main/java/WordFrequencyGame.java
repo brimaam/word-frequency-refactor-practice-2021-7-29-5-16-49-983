@@ -6,7 +6,7 @@ public class WordFrequencyGame {
     public static final String BLANK_SPACE = "\\s+";
     public static final int ONE_WORD = 1;
 
-    public String getResult(String sentence) {
+    public String generateWordFrequency(String sentence) {
 
         if (sentence.split(BLANK_SPACE).length == ONE_WORD) {
             return sentence + " " + ONE_WORD;
