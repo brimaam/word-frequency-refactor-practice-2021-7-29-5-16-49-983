@@ -1,6 +1,6 @@
 public class WordInfo {
-    private String word;
-    private int wordCount;
+    private final String word;
+    private final int wordCount;
 
     public WordInfo(String word, int wordCount) {
         this.word = word;
