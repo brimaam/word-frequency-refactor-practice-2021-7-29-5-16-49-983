@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 public class WordFrequencyGame {
 
     public static final String BLANK_SPACE = "\\s+";
+    public static final String ERROR_MESSAGE = "Calculate Error";
 
     public String generateWordFrequency(String sentence) {
         try {
@@ -13,7 +14,7 @@ public class WordFrequencyGame {
 
             return combineWordInfoListToAString(wordInfoList);
         } catch (Exception e) {
-            return "Calculate Error";
+            return ERROR_MESSAGE;
         }
     }
 
